@@ -1,0 +1,5 @@
+{
+    "ControllerNamespcae":"crdireporter\\controller\\"
+    ,"messageMap":{}
+    ,"logConfig":{"type":"echo","active":0}
+}

@@ -8,6 +8,8 @@
     },
     "autoload": {
         "psr-4": {"crdiReporter\\reporting\\":"./reporting/",
-             "kuaminika\\FormWriter\\":"./KFormWriter/"}        
+             "kuaminika\\FormWriter\\":"./KFormWriter/",
+             "crdireporter\\controller\\":"./controller/",
+            "Log_Utilities\\":"./kLog_Utility"}        
     }
 }

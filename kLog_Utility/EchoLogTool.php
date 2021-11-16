@@ -5,15 +5,22 @@ use DateTime;
 
 class EchoLogTool implements ILogTool
 {
-    public function toggleActivation($isActive)
+    private bool $isActive;
+
+    public function __construct()
+    {   
+        $this->isActive = false;
+    }
+    public function toggleActivation( $isActive)
     {
         $this->isActive = $isActive;
     }
     public function log($str)
     {
         if(!$this->isActive) return;
+      
         $dt = new \DateTime();
-        echo $dt.":";
+        echo date_format($dt, 'Y-m-d H:i:s').":";
         echo $str;
         echo "<br>";
     }

@@ -1,1 +1,2 @@
 ./vendor/bin/phpunit test/TestFormWriter.php
+./vendor/bin/phpunit test/Test_Strg_ExpenseRpt.php
