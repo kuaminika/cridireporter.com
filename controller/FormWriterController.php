@@ -31,23 +31,25 @@ class FormWriterController extends AController
          $i = 0 ;
          //todo need to handle case when json is invalid
          $expenseTotals = 0;
+         $reason = "";
          foreach($expensesRaw as $exp)
          {
-            $log->toggleActivation(true);
+           // $log->toggleActivation(true);
             $log->log($templateName ."-".$i);
             $f_exp = [];
             list( $f_exp["expense_date"] ) =  explode("T", $exp->expenseDate);
            $log->showVDump($exp->expenseDate);
            $log->showVDump($f_exp["expense_date"]);
            $log->toggleActivation(false);
+           $reason = $exp->reason;
            // $f_exp["expense_date"]   = $exp->expenseDate;
-            $f_exp["expense_reason"] = $exp->briefDescription." pour ".$exp->reason;
+            $f_exp["expense_reason"] = $exp->briefDescription;//." pour ".$exp->reason;
             $f_exp["expense_amount"] = $exp->cost;
             $expenseTotals+=$exp->cost;
             $expenses[$i]= $f_exp;
             $i++;
          }
- 
+         
          $templatePath = __DIR__."/../template/".$templateName.".pdf";
          $destination  = __DIR__."/../output/filled.pdf";
         
@@ -57,6 +59,7 @@ class FormWriterController extends AController
          
          $strategy = new Strg_ExpenseRpt($tool);
          $payLoad = new \stdClass();
+         $payLoad->usager = $reason;
          $payLoad->expenses = $expenses;
          $payLoad->ExpenseTotals = $expenseTotals;
          $report =  $strategy->getReport();

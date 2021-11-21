@@ -52,6 +52,7 @@ class Strg_ExpenseRpt implements IPrintStrategy
             $arrModel["expense_amount.".$i]=$expense["expense_amount"];
             $i++;
         }
+        $arrModel["usager"]= $payload->usager;
         $arrModel["ExpenseTotals"] = $payload->ExpenseTotals;
         $this->printTool->treatModel($arrModel);
     }
