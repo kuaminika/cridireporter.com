@@ -3,6 +3,7 @@ namespace Log_Utilities;
 
 require_once dirname(__FILE__)."/EchoLogTool.php";
 require_once dirname(__FILE__)."/DBTableLogTool.php";
+require_once dirname(__FILE__)."/FileWriteLog.php";
 class LogToolCreator{
     public static function getCreateLogFn($stringLogType)
     {
@@ -20,6 +21,12 @@ class LogToolCreator{
                                 $logTool  = new EchoLogTool("logTool_main");
                                 return $logTool;
                             },
+                    "file"=>function()
+                    {
+                        
+                        $logTool  = new FileWriteLogTool("logTool_main");
+                        return $logTool;
+                    },
                     "db"=>function($dbTool,$settings)
                     {
                         $params = array(
