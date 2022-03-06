@@ -41,7 +41,7 @@ class FormWriterController extends AController
            $log->showVDump($f_exp["expense_date"]);
            $log->toggleActivation(false);
            // $f_exp["expense_date"]   = $exp->expenseDate;
-            $f_exp["expense_reason"] = $exp->briefDescription." pour ".$exp->reason;
+            $f_exp["expense_reason"] = $exp->briefDescription." pour ".$exp->spentOnName;
             $f_exp["expense_amount"] = $exp->cost;
             $expenseTotals+=$exp->cost;
             $expenses[$i]= $f_exp;
